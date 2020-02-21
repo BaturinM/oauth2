@@ -1,0 +1,39 @@
+version: "3.3"
+
+services:
+  flask:
+    container_name: flask
+    image: webapp-flask
+    build:
+      context: .
+      dockerfile: flask.dockerfile
+    volumes:
+      - ./:/app
+    networks:
+      - my_network
+
+  nginx:
+    container_name: nginx
+    image: webapp-nginx
+    build:
+      context: .
+      dockerfile: nginx.dockerfile
+    ports:
+      - 5000:80
+    depends_on:
+      - flask
+    networks:
+      - my_network
+
+  postgresql:
+    container_name: postgresql
+    image: postgres:11
+    restart: always
+    volumes:
+      - /opt/pdp/postgresql:/var/lib/postgresql/data
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge

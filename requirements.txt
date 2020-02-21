@@ -1,0 +1,6 @@
+Flask
+uWSGI
+flask-sqlalchemy
+psycopg2-binary
+flask_oauthlib
+sqlalchemy_utils

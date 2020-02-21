@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div>Приложение "{{ client_name }}" запрашивает доступ к следующим данным: {{scope}}. Разрешить доступ?</div>
+<form action="" method="post">
+  <button name="confirm" value="yes">Разрешить</button>
+  <button name="confirm" value="no">Отказать</button>
+</form>
+{% endblock %}
